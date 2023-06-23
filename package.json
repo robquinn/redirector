@@ -115,9 +115,9 @@
     "webpack-node-externals": "^3.0.0"
   },
   "engines": {
-    "node": "18.16.1",
-    "npm": "9.7.2",
-    "pnpm": "8.6.3"
+    "node": "18.x",
+    "npm": "9.x",
+    "pnpm": "8.x"
   },
   "pnpm": {
     "overrides": {
