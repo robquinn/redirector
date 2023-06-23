@@ -97,13 +97,11 @@ pnpm run test:integration
 1. You must publish your repo to github
 2. You must connect your the github repo to the application in the Heroku as explained [here](https://devcenter.heroku.com/articles/github-integration#enabling-github-integration)
 3. You must set the appropriate environment variables in Heroku as explained [here](https://devcenter.heroku.com/articles/config-vars#managing-config-vars)
-   - SERVER\_\_GRAPHQL_PATHNAME
-   - SERVER\_\_HOSTNAME
-   - SERVER\_\_PORT
-   - DATABASE\_\_DB_URL
-   - PORTAL\_\_PASSWORD
-   - PORTAL\_\_REDIRECT_URL
+   - `SERVER__GRAPHQL_PATHNAME` (should be `/graphql`)
+   - `SERVER__HOSTNAME` (should be `localhost`)
+   - `DATABASE__DB_URL` (should be your Database URL, check out [JawsDB Maria](https://devcenter.heroku.com/articles/jawsdb-maria) for a free DB)
+   - `PORTAL__REDIRECT_URL` (your web portal url)
+   - `PORTAL__PASSWORD` (your web portal password)
 4. You must set the appropriate buildpack, [heroku-buildpack-pnpm](https://github.com/unfold/heroku-buildpack-pnpm)
-   - https://github.com/unfold/heroku-buildpack-pnpm
 5. You must deploy the "main" branch as explained [here](https://devcenter.heroku.com/articles/github-integration#manual-deploys)
 6. The `Procfile` will take care of starting the app and migrating the database

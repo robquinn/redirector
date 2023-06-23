@@ -45,7 +45,7 @@ const server = new ApolloServer<Context>({
     foundation: /http[s]?:\/\/(www\.)?russlyonfoundation\.org/gm,
     localhost: new RegExp(
       `/^http[s]?://(localhost|127.0.0.1|${process.env.SERVER__HOSTNAME}):${
-        process.env.SERVER__PORT ?? 80
+        process.env.PORT ?? process.env.SERVER__PORT ?? 80
       }/gm`,
     ),
   }
@@ -53,7 +53,6 @@ const server = new ApolloServer<Context>({
   app.use(
     express.static(path.resolve(process.cwd(), 'dist', 'client')),
     cors<cors.CorsRequest>({
-      // origin: `/$|^http[s]?://localhost:${process.env.SERVER__PORT ?? 4000}$/gm`,
       origin: [origins.foundation],
       methods: 'GET,HEAD,PUT,PATCH,POST,OPTIONS,DELETE',
       preflightContinue: false,
