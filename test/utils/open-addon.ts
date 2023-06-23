@@ -12,7 +12,7 @@ const openAddon = async (page: Page): Promise<void> => {
     ;(async () => {
       if (
         request.resourceType() === 'script' &&
-        request.url() === `${productionUrl}/redirecter.js`
+        request.url() === `${productionUrl}/redirector.js`
       ) {
         await request.abort()
         return

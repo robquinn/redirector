@@ -66,6 +66,7 @@ module.exports = {
     },
   },
   rules: {
+    'no-restricted-globals': 'off',
     'no-underscore-dangle': ['error', { allow: ['__BROWSER_GLOBAL__'] }],
     'object-curly-spacing': 'off',
     '@typescript-eslint/object-curly-spacing': 'error',

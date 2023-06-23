@@ -11,11 +11,17 @@ export default class Verifier implements IVerifier {
   }
 
   async init(): Promise<void> {
-    if (await this.codeInUrlParamIsValid()) {
+    if (this.codeIsInUrlParams() && (await this.codeInUrlParamIsValid())) {
       await Verifier.fillAndSubmitForm()
     } else {
       alert('You do not have the proper privileges to access this site')
     }
+  }
+
+  codeIsInUrlParams(): boolean {
+    return new RegExp(`[?&]code=${this.hashInUrlParam}`, 'gm').test(
+      location.search,
+    )
   }
 
   async codeInUrlParamIsValid(): Promise<boolean> {
