@@ -12,8 +12,8 @@ export default class Verifier implements IVerifier {
 
   async init(): Promise<void> {
     if (this.codeIsInUrlParams() && (await this.codeInUrlParamIsValid())) {
-      await Verifier.fillAndSubmitForm()
       Verifier.removeCodeUrlParam()
+      await Verifier.fillAndSubmitForm()
     } else {
       alert('You do not have the proper privileges to access this site')
     }
