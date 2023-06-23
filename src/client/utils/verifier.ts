@@ -11,22 +11,11 @@ export default class Verifier implements IVerifier {
   }
 
   async init(): Promise<void> {
-    if (this.codeIsInUrlParams() && (await this.codeInUrlParamIsValid())) {
-      Verifier.removeCodeUrlParam()
+    if (await this.codeInUrlParamIsValid()) {
       await Verifier.fillAndSubmitForm()
     } else {
       alert('You do not have the proper privileges to access this site')
     }
-  }
-
-  codeIsInUrlParams(): boolean {
-    return new RegExp(`[?&]code=${this.hashInUrlParam}`, 'gm').test(
-      location.search,
-    )
-  }
-
-  static removeCodeUrlParam(): void {
-    window.history.replaceState({}, document.title, '/members')
   }
 
   async codeInUrlParamIsValid(): Promise<boolean> {
@@ -64,14 +53,17 @@ export default class Verifier implements IVerifier {
   static async fillOutForm(): Promise<{ status: string }> {
     // eslint-disable-next-line @typescript-eslint/no-this-alias
     return await new Promise((resolve) => {
-      const children = Verifier.getFormElement().childNodes
-      for (let i = 0; i < children.length; i += 1) {
-        console.log('nodeName', children[i].nodeName)
-        console.log('nodeType', children[i].nodeType)
-        if (children[i].nodeName === 'INPUT') {
-          ;(children[i] as HTMLInputElement).value +=
-            process.env.PORTAL__PASSWORD
-          resolve({ status: 'success' })
+      const formElement = Verifier.getFormElement()
+      if (formElement != null) {
+        const children = formElement.childNodes
+        for (let i = 0; i < children.length; i += 1) {
+          console.log('nodeName', children[i].nodeName)
+          console.log('nodeType', children[i].nodeType)
+          if (children[i].nodeName === 'INPUT') {
+            ;(children[i] as HTMLInputElement).value +=
+              process.env.PORTAL__PASSWORD
+            resolve({ status: 'success' })
+          }
         }
       }
     })

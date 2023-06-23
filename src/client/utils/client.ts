@@ -14,9 +14,14 @@ export default class Client implements IClient {
   async init(): Promise<void> {
     if (Client.urlParamExists(this.urlParams.code)) {
       const hashInUrlParam = Client.getUrlParam(this.urlParams.code)
+      Client.removeCodeUrlParam()
       const verifier = new Verifier(hashInUrlParam)
       await verifier.init()
     }
+  }
+
+  static removeCodeUrlParam(): void {
+    window.history.replaceState({}, document.title, '/members')
   }
 
   static getUrlParam(paramName: string): string {
