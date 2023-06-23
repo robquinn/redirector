@@ -23,21 +23,15 @@ export const schema = makeSchema({
       'schema.graphql',
     ),
   },
-  sourceTypes: {
-    modules: [
-      {
-        module: path.resolve(
-          process.cwd(),
-          'node_modules',
-          '.prisma',
-          'client',
-          'index.d.ts',
-        ),
+  // sourceTypes: {
+  //   modules: [
+  //     {
+  //       module: '.prisma/client/index.d.ts',
 
-        alias: 'prisma',
-      },
-    ],
-  },
+  //       alias: 'prisma',
+  //     },
+  //   ],
+  // },
 })
 
 export default schema

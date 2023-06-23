@@ -27,6 +27,11 @@
       "../src/server/graphql/generated"
     ]
   },
+  "plugins": [
+    {
+      "name": "nexus/typescript-language-service"
+    }
+  ],
   "ts-node": {
     "compilerOptions": {
       "esModuleInterop": true,
