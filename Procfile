@@ -1,3 +1,3 @@
-web: pnpm run start
+web: npm run start
 
-release: pnpm run prisma:migrate:deploy
+release: npm run prisma:migrate:deploy
