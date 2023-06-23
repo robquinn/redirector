@@ -1,22 +1,20 @@
-import * as dotenv from 'dotenv'
-
 import httpServer from './express/server'
 
-dotenv.config()
-;(async () => {
-  // Modified server startup
-  const startServer = async (): Promise<void> => {
-    await new Promise<void>((resolve) => {
-      httpServer.listen({ port: process.env.SERVER__PORT ?? 80 }, () => {
-        console.log(
-          `🚀 Server ready at http://${process.env.SERVER__HOSTNAME}:${
-            process.env.SERVER__PORT ?? 80
-          }/`,
-        )
-        resolve()
-      })
+// Modified server startup
+const startServer = async (): Promise<void> => {
+  await new Promise<void>((resolve) => {
+    httpServer.listen({ port: process.env.SERVER__PORT ?? 80 }, () => {
+      console.log(
+        `🚀 Server ready at http://${process.env.SERVER__HOSTNAME}:${
+          process.env.SERVER__PORT ?? 80
+        }/`,
+      )
+      resolve()
     })
-  }
+  })
+}
+
+;(async () => {
   await startServer()
 })()
   .then(() => true)
