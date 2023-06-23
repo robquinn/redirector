@@ -152,7 +152,6 @@ const prodConfig = configs.map((config) => (env, argv) => {
     plugins: [
       ...config.plugins,
       new webpack.DefinePlugin({
-        'process.env.SERVER__PORT': JSON.stringify(process.env.SERVER__PORT),
         'process.env.SERVER__HOSTNAME': JSON.stringify(
           process.env.SERVER__HOSTNAME,
         ),
@@ -171,6 +170,10 @@ const prodConfig = configs.map((config) => (env, argv) => {
         'process.env.DATABASE__DB_URL': JSON.stringify(
           process.env.DATABASE__DB_URL,
         ),
+        'process.env.SERVER__PRODUCTION_URL': JSON.stringify(
+          process.env.SERVER__PRODUCTION_URL,
+        ),
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       }),
     ],
   }

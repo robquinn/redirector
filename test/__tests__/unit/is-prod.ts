@@ -1,5 +1,5 @@
 import { describe, expect, it, jest, beforeEach, afterAll } from '@jest/globals'
-import isProd from '../../../src/server/utils/is-prod'
+import isProd from '../../../src/client/utils/is-prod'
 
 describe('isProd', () => {
   const OLD_ENV = process.env
