@@ -3,11 +3,6 @@ import * as dotenv from 'dotenv'
 import httpServer from './express/server'
 
 dotenv.config()
-// if (isProd()) {
-//   dotenv.config({ path: '../../.env.production' }) // Load the environment variables
-// } else {
-//   dotenv.config({ path: '../../.env.development' })
-// }
 ;(async () => {
   // Modified server startup
   const startServer = async (): Promise<void> => {
