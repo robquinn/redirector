@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "src/*": ["../src/*"],
+      "types/*": ["../types/*"]
+    },
+    "sourceMap": true,
+    "module": "commonjs",
+    "target": "ES2018",
+    "outDir": "dist",
+    "lib": ["esnext", "dom"],
+    // "strict": true,
+    "allowJs": true,
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "strictNullChecks": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": false,
+    "typeRoots": [
+      "../node_modules/@types",
+      "../types",
+      "../src/server/graphql/generated"
+    ]
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "esModuleInterop": true,
+      "target": "esnext",
+      "module": "commonjs",
+      "strict": true
+    },
+    "transpileOnly": true
+  },
+  "include": ["../src/server", "../types"],
+  "exclude": ["../node_modules", "../src/client"]
+}

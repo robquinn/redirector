@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "src/*": ["../src/*"],
+      "types/*": ["../types/*"]
+    },
+    "types": ["@types/node", "test"],
+    "noEmit": true,
+    "allowJs": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true
+  },
+  "include": ["../test/**/*"]
+}

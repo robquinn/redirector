@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nexusPrisma {
+   provider = "nexus-prisma"
+}
+
+datasource db {
+  provider          = "mysql"
+  // url            = env("DATABASE__DB_URL")
+  url               = ""
+  shadowDatabaseUrl = env("DATABASE__SHAWDOW_DB_URL")
+}
+
+/// a Code to verify origin
+model Code {
+  /// a Code id
+  id        Int      @id @default(autoincrement())
+  /// a unique hash for the Code
+  hash      String   @db.VarChar(1500)
+  /// Code createdAt field
+  createdAt DateTime @default(now())
+  /// Code updatedAt field
+  updatedAt DateTime @updatedAt
+}

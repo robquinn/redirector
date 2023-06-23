@@ -1,0 +1,11 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# lint-staged
+exec >/dev/tty 2>&1
+pnpm run lint-staged
+# produce new .example.env
+pnpm run env:example
+git add .env.example
+# sort package json
+pnpm run sort

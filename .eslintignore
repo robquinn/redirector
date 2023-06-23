@@ -1,0 +1,19 @@
+# .eslintignore
+
+# directories
+.husky
+node_modules
+prisma/migrations
+dist
+
+# files
+yarn.lock
+yarn-error.lock
+package-lock.json
+package.json
+
+# express
+src/server/graphql/generated
+
+# generated js
+**/*.js

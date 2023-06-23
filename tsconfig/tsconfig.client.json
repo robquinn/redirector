@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "src/*": ["../src/*"],
+      "types/*": ["../types/*"]
+    },
+    "lib": ["es5", "es2015.promise", "dom", "es2015"],
+    "target": "es5",
+    "types": ["node"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": false,
+    "sourceMap": false,
+    "noImplicitAny": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedParameters": false,
+    "typeRoots": ["../node_modules/@types", "../types"]
+  },
+  "include": ["../src/client", "../types"],
+  "exclude": ["../node_modules", "../src/server"]
+}

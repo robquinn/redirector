@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "./tsconfig.client.json",
+    "./tsconfig.server.json",
+    "./tsconfig.test.json"
+  ],
+  "compilerOptions": {
+    "baseUrl": "../",
+    "paths": {
+      "src/*": ["../src/*"],
+      "types/*": ["../types/*"]
+    },
+    "typeRoots": ["../node_modules/@types", "../types"]
+  },
+  "include": [
+    "../src",
+    "../types",
+    "../test",
+    "../.eslintrc.js",
+    "../.lintstagedrc.js",
+    "../.prettierrc.js",
+    "../babel.config.js",
+    "../codegen.ts",
+    "../jest-puppeteer.config.ts",
+    "../jest-integration.config.ts",
+    "../jest-unit.config.ts",
+    "../postcss.config.js",
+    "../webpack.config.js"
+  ],
+  "exclude": ["../node_modules"]
+}

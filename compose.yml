@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  mysql-dev:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=aliceinwonderland
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=wonderland
+      - MYSQL_DATABASE=devdb
+    volumes:
+      - 'mysql-dev:/var/lib/mysql'
+    ports:
+      - 3306:3306
+  mysql-shadow:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=aliceinwonderland
+      - MYSQL_USER=alice
+      - MYSQL_PASSWORD=wonderland
+      - MYSQL_DATABASE=shadowdb
+    volumes:
+      - 'mysql-shadow:/var/lib/mysql'
+    ports:
+      - 33060:3306
+volumes:
+  mysql-dev:
+  mysql-shadow:

@@ -1,0 +1,15 @@
+# .prettierignore
+
+# directories
+.husky
+node_modules
+prisma/migrations
+shell
+dist
+
+# files
+yarn.lock
+yarn-error.log
+
+# hapi
+# src/server/graphql/generated
