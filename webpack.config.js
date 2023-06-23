@@ -11,13 +11,10 @@ const nodeExternals = require('webpack-node-externals')
 const dotenv = require('dotenv')
 
 const isProd = process.env.NODE_ENV == 'production'
+const envVars = dotenv.config().parsed
 
 const commonConfig = {
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': JSON.stringify(dotenv.config().parsed),
-    }),
-  ],
+  plugins: [],
   module: {
     rules: [],
   },
@@ -139,14 +136,12 @@ const devConfig = configs.map((config) => (env, argv) => {
   return {
     ...config,
     mode: 'development',
-    // plugins: [
-    //   ...config.plugins,
-    //   new webpack.DefinePlugin({
-    //     'process.env': JSON.stringify(
-    //       dotenv.config({ path: './.env.development' }).parsed,
-    //     ),
-    //   }),
-    // ],
+    plugins: [
+      ...config.plugins,
+      new webpack.DefinePlugin({
+        'process.env': JSON.stringify(envVars),
+      }),
+    ],
   }
 })
 

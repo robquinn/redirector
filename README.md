@@ -15,6 +15,7 @@
   - [Building](#building)
   - [Running the Server](#running-the-server)
   - [Testing](#testing)
+  - [Deploy to Heroku](#deploy-to-heroku)
 
 This repo is a server that redirects a user to a password protected web page, and then automatically logs the user into the web page. The application is written entirely in [TypeScript](https://www.typescriptlang.org/) and features [Apollo Server](https://www.apollographql.com/docs/apollo-server/) built atop [Express](https://expressjs.com/) that exposes a [GraphQL API](https://graphql.org/). The GraphQL Schema in this repo follows the `code-first` philosopy, and uses [GraphQL Nexus](https://nexusjs.org/) to produce said schema. Databasing for the application is done through [Prisma](https://www.prisma.io/), which allows you to change whichever database you use on the fly. For our purposes, we chose a [MySQL](https://www.mysql.com/) database as we get a speical deal on them from a particular provider. The repo implements testing via [Jest](https://jestjs.io/) and is facilitated by the use of [Puppeteer](https://pptr.dev/).
 
@@ -63,7 +64,7 @@ In order to build the repo for development, run...
 pnpm run build:dev
 ```
 
-In order to build the repo for production, run...
+In order to build the repo for production (intended for [Heroku](https://www.heroku.com)), run...
 
 ```bash
 pnpm run build:prod
@@ -90,3 +91,19 @@ In order to run the integration test, run...
 ```bash
 pnpm run test:integration
 ```
+
+## Deploy to Heroku
+
+1. You must publish your repo to github
+2. You must connect your the github repo to the application in the Heroku as explained [here](https://devcenter.heroku.com/articles/github-integration#enabling-github-integration)
+3. You must set the appropriate environment variables in Heroku as explained [here](https://devcenter.heroku.com/articles/config-vars#managing-config-vars)
+   - SERVER\_\_GRAPHQL_PATHNAME
+   - SERVER\_\_HOSTNAME
+   - SERVER\_\_PORT
+   - DATABASE\_\_DB_URL
+   - PORTAL\_\_PASSWORD
+   - PORTAL\_\_REDIRECT_URL
+4. You must set the appropriate buildpack, [heroku-buildpack-pnpm](https://github.com/unfold/heroku-buildpack-pnpm)
+   - https://github.com/unfold/heroku-buildpack-pnpm
+5. You must deploy the "main" branch as explained [here](https://devcenter.heroku.com/articles/github-integration#manual-deploys)
+6. The `Procfile` will take care of starting the app and migrating the database
