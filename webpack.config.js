@@ -149,14 +149,30 @@ const prodConfig = configs.map((config) => (env, argv) => {
   return {
     ...config,
     mode: 'production',
-    // plugins: [
-    //   ...config.plugins,
-    //   new webpack.DefinePlugin({
-    //     'process.env': JSON.stringify(
-    //       dotenv.config({ path: './.env.production' }).parsed,
-    //     ),
-    //   }),
-    // ],
+    plugins: [
+      ...config.plugins,
+      new webpack.DefinePlugin({
+        'process.env.SERVER__PORT': JSON.stringify(process.env.SERVER__PORT),
+        'process.env.SERVER__HOSTNAME': JSON.stringify(
+          process.env.SERVER__HOSTNAME,
+        ),
+        'process.env.SERVER__GRAPHQL_PATHNAME': JSON.stringify(
+          process.env.SERVER__GRAPHQL_PATHNAME,
+        ),
+        'process.env.SERVER__PRODUCTION_URL': JSON.stringify(
+          process.env.SERVER__PRODUCTION_URL,
+        ),
+        'process.env.PORTAL__REDIRECT_URL': JSON.stringify(
+          process.env.PORTAL__REDIRECT_URL,
+        ),
+        'process.env.PORTAL__PASSWORD': JSON.stringify(
+          process.env.PORTAL__PASSWORD,
+        ),
+        'process.env.DATABASE__DB_URL': JSON.stringify(
+          process.env.DATABASE__DB_URL,
+        ),
+      }),
+    ],
   }
 })
 
