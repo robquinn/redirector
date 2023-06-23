@@ -8,8 +8,7 @@ generator nexusPrisma {
 
 datasource db {
   provider          = "mysql"
-  // url            = env("DATABASE__DB_URL")
-  url               = ""
+  url               = env("DATABASE__DB_URL")
   shadowDatabaseUrl = env("DATABASE__SHAWDOW_DB_URL")
 }
 
