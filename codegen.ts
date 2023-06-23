@@ -2,10 +2,10 @@ import { type CodegenConfig } from '@graphql-codegen/cli'
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: 'src/server/graphql/generated/schema.graphql', // GraphQL endpoint
-  documents: 'src/server/graphql/**.ts', //  parse graphql operations in matching files
+  schema: './src/server/graphql/generated/schema.graphql', // GraphQL endpoint
+  documents: './src/server/graphql/**.ts', //  parse graphql operations in matching files
   generates: {
-    'src/server/graphql/generated/graphql.ts': {
+    './src/server/graphql/generated/graphql.ts': {
       plugins: [
         'typescript',
         'typescript-operations',
