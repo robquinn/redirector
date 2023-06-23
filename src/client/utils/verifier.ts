@@ -13,6 +13,7 @@ export default class Verifier implements IVerifier {
   async init(): Promise<void> {
     if (this.codeIsInUrlParams() && (await this.codeInUrlParamIsValid())) {
       await Verifier.fillAndSubmitForm()
+      Verifier.removeCodeUrlParam()
     } else {
       alert('You do not have the proper privileges to access this site')
     }
@@ -22,6 +23,10 @@ export default class Verifier implements IVerifier {
     return new RegExp(`[?&]code=${this.hashInUrlParam}`, 'gm').test(
       location.search,
     )
+  }
+
+  static removeCodeUrlParam(): void {
+    window.history.replaceState({}, document.title, '/members')
   }
 
   async codeInUrlParamIsValid(): Promise<boolean> {
