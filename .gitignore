@@ -14,7 +14,7 @@ results
 tmp
 
 # GraphQL Generated Schema and Types
-src/server/graphql/generated
+# src/server/graphql/generated
 
 # Coverage reports
 coverage
