@@ -64,7 +64,7 @@ const server = new ApolloServer<Context>({
   app.use(
     '/graphql',
     cors<cors.CorsRequest>({
-      origin: [origins.localhost, '*'], // origin: '*',
+      origin: [origins.localhost, origins.foundation], // origin: '*',
       methods: 'GET,HEAD,PUT,PATCH,POST,OPTIONS,DELETE',
       preflightContinue: false,
       optionsSuccessStatus: 204,
